@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loopin - Log in</title>
+    <link href="../CSS/style.css" rel="stylesheet">
+    <link href="../CSS/forms.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght,GRAD@0,17..18,400..700,-3;1,17..18,400..700,-3&family=Story+Script&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/ec3d7ec6ab.js" crossorigin="anonymous"></script>
+    <script type="module" src="./login.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-header">
+            <h1>Loopin'</h1>
+            <h2>- staying in the loop</h2>
+            </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a> </li>
+                <li><a href="./login.html"><i class="fa-solid fa-right-to-bracket"></i> Login</a> </li>
+                <li><a href="./register.html"><i class="fa-solid fa-user-plus"></i>  Register</a> </li>
+                <li><a href="../profile/profilePage.html"><i class="fa-solid fa-user"></i> My Profile</a> </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Log in</h1>
+        <p class="form-text">Please fill out the form to log on to your account</p>
+        <div class="form-page">
+    <form id="login-form">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password">
+        <button id="submit">Log in</button>
+    </form>
+    <p class="form-text">Not registered?<br>
+        Please create a new account <a href="./register.html" class="redirect-link">here</a></p>
+    </main>
+    
+</body>
+</html>

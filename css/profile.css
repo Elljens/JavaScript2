@@ -1,0 +1,117 @@
+#profile.container {
+    position: absolute;
+}
+
+.profile-banner{
+    position: relative;
+    width: 100%;
+    height: 250px;
+    filter: grayscale(100%);
+}
+
+.avatar {
+    position: relative;
+    top: -100px;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 50%;
+    height: 150px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.profile-name {
+    position: relative;
+    top: -110px;
+    text-align: center;
+}
+
+.post-container {
+    position: absolute;
+    top: 550px;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 40px 0;
+}
+
+.post-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card {
+    background-color: #c0c8ca;
+    width: 250px;
+    padding: 10px;
+    margin: 30px auto;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.post-image {
+    height: 300px;
+    width: 95%;
+    object-fit: cover;
+    padding-top: 10px;
+}
+
+.card-button {
+    background-color: #2e4156;
+    color: #d4d8dd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+
+
+@media (min-width: 700px) {
+    .profile-banner {
+        height: 350px;
+    }
+
+    .avatar {
+        top: -170px;
+        height: 250px;
+    }
+
+    .profile-name {
+        top: -170px;
+    }
+
+    .post-container {
+        top: 700px;
+    }
+
+    .card {
+        width: 500px;
+    }
+
+    #create-post {
+        width: 400px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .profile-banner {
+        height: 450px;
+    }
+
+    .avatar {
+        top: -200px;
+        height: 300px;
+    }
+
+    .profile-name {
+        top: -200px;
+    }
+
+    .post-container {
+        top: 800px;
+    }
+
+    .card {
+        width: 700px;
+    }
+}

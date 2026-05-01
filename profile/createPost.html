@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loopin - Create Post</title>
+    <link href="../CSS/style.css" rel="stylesheet">
+    <link href="../CSS/forms.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght,GRAD@0,17..18,400..700,-3;1,17..18,400..700,-3&family=Story+Script&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/ec3d7ec6ab.js" crossorigin="anonymous"></script>
+    <script type="module" src="./createPost.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-header">
+            <h1>Loopin'</h1>
+            <h2>- staying in the loop</h2>
+            </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a> </li>
+                <li><a href="../auth/login.html"><i class="fa-solid fa-right-to-bracket"></i> Login</a> </li>
+                <li><a href="../auth/register.html"><i class="fa-solid fa-user-plus"></i>  Register</a> </li>
+                <li><a href="./profilePage.html"><i class="fa-solid fa-user"></i> My Profile</a> </li>
+            </ul>
+        </nav>
+    </header> 
+    <main>
+        <h1>Create new post</h1>
+
+        <form id="create-post">
+            <label for="title">Title</label>
+            <textarea id="title" name="title" class="formfields" required data-required></textarea>
+            <label for="body">Text</label>
+            <textarea id="body" name="body" class="formfields" required data-required></textarea>
+            <label for="url">Image URL</label>
+            <textarea id="url" name="url" class="formfields" ></textarea>
+            <label for="alt">Image ALT</label>
+            <textarea id="alt" name="alt" class="formfields"></textarea>
+            <button class="create-btn">Create</button>
+        </form>
+    </main>
+    
+</body>
+</html>

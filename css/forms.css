@@ -1,0 +1,61 @@
+h1,
+p {
+    text-align: center;
+    padding: 10px;
+}
+
+#create-post,
+#login-form,
+#register-form,
+#edit-post {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin: auto;
+    background-color: #c0c8ca;
+    padding: 20px;
+    border-radius: 20px;
+    border: 0.5px solid #355C7D;
+}
+
+.formfields,
+input {
+    font-size: 14px;
+    color: rgb(83, 79, 79);
+    padding: 8px 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 0.5px solid #355C7D;
+    height: 25px;
+    field-sizing: content;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)  inset;
+}
+
+.create-btn,
+.edit-btn,
+#submit {
+    background-color: #355C7D;
+    color: #d4d8dd;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: medium;
+    margin: 10px 0;
+}
+
+.redirect-link {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+@media (min-width: 700px) {
+
+    #create-post,
+    #login-form,
+    #register-form,
+    #edit-post {
+        width: 400px;
+    }
+}

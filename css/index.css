@@ -1,0 +1,61 @@
+#all-posts-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    justify-content: center;
+    margin: auto;
+}
+
+.card {
+    background-color: #c0c8ca;
+    width: 250px;
+    padding: 10px;
+    margin: 10px auto;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.post-image {
+    height: 300px;
+    width: 95%;
+    object-fit: cover;
+    padding-top: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.card-created {
+    font-size: small;
+}
+
+#load-more-btn {
+    display: block;
+    margin: 30px auto;
+    background-color: #2e4156;
+    color:#c0c8ca;
+    padding: 10px 30px;
+    border-radius: 8px;
+    font-size: medium;
+    font-weight: 500;
+}
+
+@media (min-width: 700px) {
+    .card {
+        width: 500px;
+    }
+}
+
+
+@media (min-width: 1000px) {
+    .card {
+        width: 700px;
+    }
+
+    .post-image {
+        height: 400px;
+    }
+}
+

@@ -1,0 +1,46 @@
+#detail-posts-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.post-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.post-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    margin: auto;
+}
+
+.back-btn {
+    background-color: #2e4156;
+    color: #aab7b7;
+    padding: 10px;
+    width: 150px;
+    text-align: center;
+    border-radius: 5px;
+    margin:  30px auto;
+}
+
+
+@media (min-width: 700px) {
+    .post-image {
+        height: 400px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .post-image {
+        height: 500px;
+    }
+}
+
+h2,
+p {
+    text-align: center;
+}
