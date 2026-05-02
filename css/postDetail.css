@@ -15,6 +15,19 @@
     flex-direction: column;
     max-width: 700px;
     margin: auto;
+    text-align: center;
+}
+
+.author {
+    font-weight: 600;
+    font-size: larger;
+    margin: auto;
+    cursor: pointer;
+}
+
+h2,
+p {
+    text-align: center;
 }
 
 .back-btn {
@@ -26,6 +39,7 @@
     border-radius: 5px;
     margin:  30px auto;
 }
+
 
 
 @media (min-width: 700px) {
@@ -40,7 +54,3 @@
     }
 }
 
-h2,
-p {
-    text-align: center;
-}

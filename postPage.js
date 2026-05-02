@@ -10,7 +10,7 @@ if (!id) {
 
 async function getPost() {
     try {
-        const result = await get(`/social/posts/${id}`);
+        const result = await get(`/social/posts/${id}/?_author=true`);
 
         const post = result.data;
         console.log(post);
@@ -27,17 +27,22 @@ async function getPost() {
             const content = document.createElement('div');
             content.classList.add('post-content');
             
-            const title = document.createElement('h2');
+            const title = document.createElement('h1');
             title.textContent = post.title;
             title.classList.add('card-title')
 
+            const author = document.createElement('a')
+            author.textContent = 'Author: ' + post.author.name;
+            author.href = `./userPost.html?author=${post.author.name}`;
+            author.classList.add('author');
+
             const created = document.createElement('p');
-            created.textContent = post.created;
-            created.classList.add('card-created')
+            created.textContent = new Date(post.created).toLocaleString();
+            created.classList.add('card-created');
 
             const body = document.createElement('p');
             body.textContent = post.body;
-            body.classList.add('card-body')
+            body.classList.add('card-body');
 
             const backLink = document.createElement('a');
             backLink.href = './index.html';
@@ -46,6 +51,7 @@ async function getPost() {
 
 
             content.appendChild(title);
+            content.appendChild(author);
             content.appendChild(created);
             content.appendChild(body);
             content.appendChild(backLink);

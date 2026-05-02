@@ -1,13 +1,18 @@
-import { get, del } from "../apiClient.js";
-import { name } from "../utils.js";
+import { get, put } from "./apiClient.js";
 
 const profileContainer = document.getElementById('profile-container');
 const postContainer = document.querySelector('.post-container');
+const params = new URLSearchParams(window.location.search);
+const author = params.get("author");
+
+if (!author) {
+  alert("No posts found");
+}
 
 
 async function getProfile() {
     try {
-        const result = await get(`/social/profiles/${name}`);
+        const result = await get(`/social/profiles/${author}`);
 
         const profile = result.data;
         console.log(profile);
@@ -16,6 +21,9 @@ async function getProfile() {
         banner.src = profile.banner.url;
         banner.alt = profile.banner.alt;
         banner.classList.add('profile-banner');
+
+        const profileContent = document.createElement('div');
+        profileContent.classList.add('profile-content');
 
         const avatar = document.createElement('img');
         avatar.src = profile.avatar.url;
@@ -26,14 +34,47 @@ async function getProfile() {
         user.textContent = profile.name;
         user.classList.add('profile-name');
 
-        const logOutBtn = document.createElement('button');
-        logOutBtn.textContent = 'Log out';
-        logOutBtn.classList.add('logout-btn');
+        if (profile.bio) {
+            const bio = document.createElement('p');
+            bio.textContent = profile.bio;
+            bio.classList.add('bio');
+            profileContent.appendChild(bio);
+        }
+
+        const followers = document.createElement('p');
+        followers.textContent = 'Followers: ' + profile._count.followers;
+        followers.classList.add('follows');
+
+        const following = document.createElement('p');
+        following.textContent = 'Following: ' + profile._count.following;
+        following.classList.add('follows');
+        
+        const followBtn = document.createElement('button');
+        followBtn.textContent = 'Follow';
+        followBtn.classList.add('follow-button');
+
+        let isFollowing = false;
+        followBtn.addEventListener('click', async () => {
+            try {
+                const response = await put(`/social/profiles/${author}/follow`);
+
+                isFollowing = !isFollowing;
     
+                followBtn.textContent = isFollowing ? 'Unfollow' : 'Follow';
+            } catch (error) {
+                console.log(error);
+            }
+
+        })
+    
+        profileContent.appendChild(following);
+        profileContent.appendChild(followers);
+        profileContent.appendChild(followBtn);
+
         profileContainer.appendChild(banner);
         profileContainer.appendChild(avatar);
         profileContainer.appendChild(user);
-        profileContainer.appendChild(logOutBtn);
+        profileContainer.appendChild(profileContent);
 
     
     } catch (error) {
@@ -43,9 +84,11 @@ async function getProfile() {
 
 getProfile();
 
+
+
 async function getPostByProfile() {
     try {
-        const result = await get(`/social/profiles/${name}/posts`);
+        const result = await get(`/social/profiles/${author}/posts`);
 
         const userPost = result.data;
         console.log(userPost);
@@ -67,52 +110,16 @@ async function getPostByProfile() {
             title.textContent = userPost.title;
     
             const date = document.createElement('p');
-            date.textContent = userPost.created;
+            date.textContent = new Date(userPost.created).toLocaleString();
     
             const body = document.createElement('p');
             body.textContent = userPost.body;
-
-            const editBtn = document.createElement('button');
-            editBtn.innerHTML = '<i class="fa-solid fa-file-pen"></i> Edit post';
-            editBtn.classList.add('card-button');
-
-            const deleteBtn = document.createElement('button');
-            deleteBtn.innerHTML = '<i class="fa-solid fa-file-circle-xmark"></i> Delete post';
-            deleteBtn.classList.add('card-button');
         
             card.appendChild(title);
             card.appendChild(date);
             card.appendChild(body);
-            card.appendChild(editBtn);
-            card.appendChild(deleteBtn);
 
             postContainer.appendChild(card);
-
-            
-            editBtn.addEventListener('click', () => {
-                window.location.href = `./editPost.html?id=${userPost.id}`;
-            })
-
-            deleteBtn.addEventListener("click", async () => {
-                const confirmed = confirm(
-                  "Are you sure you want to delete this post? This action cannot be undone."
-                );              
-                if (!confirmed) return;
-              
-                try {
-                const result = await del(`/social/posts/${userPost.id}`);
-
-                card.remove();
-              
-                  if (!result.ok) {
-                    throw new Error("Failed to delete post");
-                  }
-              
-                } catch (error) {
-                  console.error(error);
-                  alert("Could not delete post");
-                }
-              });
 
         });
     
@@ -122,4 +129,3 @@ async function getPostByProfile() {
 }
 
 getPostByProfile();
-
