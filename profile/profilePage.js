@@ -79,7 +79,8 @@ async function getPostByProfile() {
             title.textContent = userPost.title;
     
             const date = document.createElement('p');
-            date.textContent = userPost.created;
+            date.textContent = new Date(userPost.created).toLocaleString();
+            
     
             const body = document.createElement('p');
             body.textContent = userPost.body;
