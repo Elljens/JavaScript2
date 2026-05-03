@@ -21,7 +21,7 @@ This website was created as a JavaScript 2 course assignment. The goal was to bu
 - HTML<br>
 - CSS<br>
 - JavaScript<br>
-- ES5 modules<br>
+- ES6 modules<br>
 
 <h2>Getting started</h2>
 Clone the repository:<br>
