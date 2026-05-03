@@ -1,4 +1,4 @@
-import { get, put } from '../apiClient.js'
+import { get, put } from '../service/apiClient.js'
 
 const editForm = document.querySelector('#edit-post');
 const titleInput = document.querySelector('#title');
@@ -28,7 +28,6 @@ async function getPostToEdit() {
 
     
     } catch (error) {
-        console.error(error);
     }
 }
 

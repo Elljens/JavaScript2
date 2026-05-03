@@ -1,4 +1,4 @@
-import { post } from "../apiClient.js";
+import { post } from "../service/apiClient.js";
 
 const registerForm = document.querySelector('#register-form');
 

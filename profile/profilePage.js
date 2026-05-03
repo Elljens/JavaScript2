@@ -1,16 +1,15 @@
-import { get, del } from "../apiClient.js";
-import { name } from "../utils.js";
+import { get, del } from "../service/apiClient.js";
+import { name } from "../service/utils.js";
 
 const profileContainer = document.getElementById('profile-container');
 const postContainer = document.querySelector('.post-container');
 
-
+/** fetches and rendering the profile of the user */
 async function getProfile() {
     try {
         const result = await get(`/social/profiles/${name}`);
 
         const profile = result.data;
-        console.log(profile);
 
         const banner = document.createElement('img');
         banner.src = profile.banner.url;
@@ -29,6 +28,18 @@ async function getProfile() {
         const logOutBtn = document.createElement('button');
         logOutBtn.textContent = 'Log out';
         logOutBtn.classList.add('logout-btn');
+
+        logOutBtn.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            localStorage.removeItem('name');
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('apiKey');
+
+            window.location.href = '../index.html';
+
+            
+        });
     
         profileContainer.appendChild(banner);
         profileContainer.appendChild(avatar);
@@ -43,12 +54,13 @@ async function getProfile() {
 
 getProfile();
 
+
+/** fetches and rendering the profile's own posts */
 async function getPostByProfile() {
     try {
         const result = await get(`/social/profiles/${name}/posts`);
 
         const userPost = result.data;
-        console.log(userPost);
 
         userPost.forEach((userPost) => {
 
@@ -109,15 +121,12 @@ async function getPostByProfile() {
                   }
               
                 } catch (error) {
-                  console.error(error);
-                  alert("Could not delete post");
                 }
               });
 
         });
     
     } catch (error) {
-        console.error(error);
     }
 }
 

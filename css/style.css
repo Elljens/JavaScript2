@@ -13,25 +13,27 @@ body {
 }
 
 nav {
+    height: 52px;
     background-color: #2e4156;
     padding: 5px;
     display: flex;
     justify-content: center;
-}
-
-nav li {
-    list-style: none;
-    display: inline;
-    padding: 10px;
+    align-items: center;
 }
 
 nav a {
     color: #d4d8dd;
     text-decoration: none;
+    padding: 10px;
 }
 
 a {
     text-decoration: none;
     color: #1a2d42;
 }
+
+h1 {
+    text-align: center;
+}
+
 

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loopin - Log in</title>
+    <title>Loopin - staying in the loop!</title>
     <link href="../CSS/style.css" rel="stylesheet">
-    <link href="../CSS/forms.css" rel="stylesheet">
+    <link href="../CSS/postDetail.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght,GRAD@0,17..18,400..700,-3;1,17..18,400..700,-3&family=Story+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/ec3d7ec6ab.js" crossorigin="anonymous"></script>
-    <script type="module" src="./login.js"></script>
+    <script type="module" src="./postPage.js"></script>
 </head>
 <body>
     <header>
@@ -19,22 +19,12 @@
             - staying in the loop</h1>
             </div>
             <nav>
-                    <a href="../index.html"><i class="fa-solid fa-house"></i> Home</a>
+                    <a href="./allPosts.html"><i class="fa-solid fa-house"></i> Home</a>
+                    <a href="../profile/profilePage.html"><i class="fa-solid fa-user loggedIn"></i> My Profile</a>
             </nav>
     </header>
     <main>
-        <h1>Log in</h1>
-        <p class="form-text">Please fill out the form to log on to your account</p>
-        <div class="form-page">
-    <form id="login-form">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email">
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password">
-        <button id="submit">Log in</button>
-    </form>
-    <p class="form-text">Not registered?<br>
-        Please create a new account <a href="./register.html" class="redirect-link">here</a></p>
+        <div id="detail-posts-container"></div>
     </main>
     
 </body>

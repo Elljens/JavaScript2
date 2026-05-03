@@ -1,28 +1,35 @@
-import { addToLocalStorage } from "../utils.js";
-import { post } from "../apiClient.js";
+import { addToLocalStorage, BASE_URL } from "../service/utils.js";
 
 const logInForm = document.querySelector('#login-form');
+const Login_URL = `${BASE_URL}/auth/login`;
 
 async function loginUser(userDetails) {
     try {
-        const response = await post('/auth/login', userDetails);
+        const fetchOptions = {
+            method: 'POST',
+            body: JSON.stringify(userDetails),
+            headers: {
+                'Content-type': 'application/json',
+            },
+        };
 
-        console.log(response);
-        if (response.ok) {
-            const accessToken = json.data.accessToken;
-            const name = json.data.name;
-            const isLoggedIn = response.ok;
+        const response = await fetch(Login_URL, fetchOptions);
+        const json = await response.json();
 
-            addToLocalStorage('name', name);
-            addToLocalStorage('accessToken', accessToken);
-            addToLocalStorage('isLoggedIn', isLoggedIn);
-        }
+    if (response.ok) {
+        const accessToken = json.data.accessToken;
+        const name = json.data.name;
+
+        addToLocalStorage('name', name);
+        addToLocalStorage('accessToken', accessToken);
+
+        window.location.href = '../posts/allPosts.html';
+
+        } 
 
     } catch (error) {
-        throw error.message;
-    }
-};
-
+}
+}
 
 
 function submitForm(event) {
@@ -34,3 +41,10 @@ function submitForm(event) {
 }
 
 logInForm.addEventListener('submit', submitForm);
+
+
+
+export function logoutUser() {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('name');
+}

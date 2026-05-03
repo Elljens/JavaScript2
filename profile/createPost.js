@@ -1,4 +1,4 @@
-import { post } from "../apiClient.js";
+import { post } from "../service/apiClient.js";
 
 const createPost = document.querySelector('#create-post');
 
@@ -6,7 +6,8 @@ async function createNewPost(postData) {
     try {
         const newPost = await post('/social/posts', postData);
 
-        console.log(postData);
+        window.location.href = './profilePage.html';
+
     } catch (error) {
         throw error.message;
     }

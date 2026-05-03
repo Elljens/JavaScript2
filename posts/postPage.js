@@ -1,4 +1,4 @@
-import { get } from "./apiClient.js";
+import { get } from "../service/apiClient.js";
 
 const postContainer = document.getElementById('detail-posts-container');
 const params = new URLSearchParams(window.location.search);
@@ -8,12 +8,13 @@ if (!id) {
   alert("No post ID found");
 }
 
+
+/** fetches and rederes a single post based on its id */
 async function getPost() {
     try {
         const result = await get(`/social/posts/${id}/?_author=true`);
 
         const post = result.data;
-        console.log(post);
 
 
             if (post.media?.url) {
@@ -45,7 +46,7 @@ async function getPost() {
             body.classList.add('card-body');
 
             const backLink = document.createElement('a');
-            backLink.href = './index.html';
+            backLink.href = './allPosts.html';
             backLink.textContent = 'Back to posts';
             backLink.classList.add('back-btn');
 
@@ -59,7 +60,6 @@ async function getPost() {
 
     
     } catch (error) {
-        console.error(error);
     }
 }
 

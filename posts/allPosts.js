@@ -1,4 +1,5 @@
-import { get } from "./apiClient.js";
+import { get } from "../service/apiClient.js";
+
 
 const allPostsContainer = document.getElementById('all-posts-container');
 const loadMoreButton = document.getElementById('load-more-btn');
@@ -118,9 +119,3 @@ loadMoreButton.addEventListener('click', () => {
 
 
 getAllPosts(currentPage);
-
-
-
-
-
-

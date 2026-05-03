@@ -1,4 +1,5 @@
-import { get, put } from "./apiClient.js";
+import { get, put } from "../service/apiClient.js";
+import { getFromLocalStorage } from "../service/utils.js";
 
 const profileContainer = document.getElementById('profile-container');
 const postContainer = document.querySelector('.post-container');
@@ -15,7 +16,6 @@ async function getProfile() {
         const result = await get(`/social/profiles/${author}`);
 
         const profile = result.data;
-        console.log(profile);
 
         const banner = document.createElement('img');
         banner.src = profile.banner.url;
@@ -53,19 +53,36 @@ async function getProfile() {
         followBtn.textContent = 'Follow';
         followBtn.classList.add('follow-button');
 
-        let isFollowing = false;
+        
+        const currentUser = getFromLocalStorage('name');
+
+        let isFollowing = profile._followers?.some(
+            user => user.name === currentUser
+        ) ?? false;
+
+        followBtn.textContent = isFollowing ? 'Unfollow' : 'Follow';
+
+
         followBtn.addEventListener('click', async () => {
             try {
-                const response = await put(`/social/profiles/${author}/follow`);
-
-                isFollowing = !isFollowing;
-    
+                followBtn.disabled = true; 
+        
+                if (isFollowing) {
+                    await put(`/social/profiles/${author}/unfollow`);
+                    isFollowing = false;
+                } else {
+                    await put(`/social/profiles/${author}/follow`);
+                    isFollowing = true;
+                }
+        
                 followBtn.textContent = isFollowing ? 'Unfollow' : 'Follow';
+        
             } catch (error) {
                 console.log(error);
+            } finally {
+                followBtn.disabled = false;
             }
-
-        })
+        });
     
         profileContent.appendChild(following);
         profileContent.appendChild(followers);
@@ -78,7 +95,6 @@ async function getProfile() {
 
     
     } catch (error) {
-        console.error(error);
     }
 }
 
@@ -91,7 +107,6 @@ async function getPostByProfile() {
         const result = await get(`/social/profiles/${author}/posts`);
 
         const userPost = result.data;
-        console.log(userPost);
 
         userPost.forEach((userPost) => {
 
@@ -124,7 +139,6 @@ async function getPostByProfile() {
         });
     
     } catch (error) {
-        console.error(error);
     }
 }
 

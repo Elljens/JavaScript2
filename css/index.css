@@ -1,3 +1,21 @@
+.welcome-container {
+    text-align: center;
+}
+
+h3 {
+    padding-top: 20px;
+}
+
+.buttons {
+    background-color: #355C7D;
+    color: #d4d8dd;
+    padding: 10px 30px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: medium;
+    margin: 30px 0; 
+}
+
 #all-posts-container {
     display: flex;
     flex-direction: column;
